@@ -1,2 +1,2 @@
-# Server_Bombaya
-서버 스터디A - 봄바야
+# Server_SPringles
+서버 - 스프링글스
