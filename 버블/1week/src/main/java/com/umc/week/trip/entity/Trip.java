@@ -22,16 +22,13 @@ public class Trip {
     private Long id;
 
     @Column(name = "memberId", nullable = false)
-    private  String memberId;  //회원
+    private  String memberId;
 
-//    @OneToMany(mappedBy = "trip")
-//    private List<Atraction> atractionList = new ArrayList<>();
-
+    @Column(name = "atraction", nullable = false)
     private String atraction;
 
     @Column(name = "tripDate", nullable = false)
     private LocalDate tripDate;
-
 
     @Builder
     public Trip(String memberId, LocalDate tripDate, String atraction) {
@@ -39,6 +36,9 @@ public class Trip {
         this.tripDate = tripDate;
         this.atraction = atraction;
     }
+
+    //    @OneToMany(mappedBy = "trip")
+//    private List<Atraction> atractionList = new ArrayList<>();
 
     public void update(Trip updateTrip){
         this.id = updateTrip.getId();

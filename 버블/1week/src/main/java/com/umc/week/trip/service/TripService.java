@@ -27,7 +27,6 @@ public class TripService {
         return tripRepository.save(tripMapper.toEntity(tripCreateRequest));
     }
 
-
     @Transactional
     public Trip update(Trip updateTrip){
         Trip existingTrip = tripRepository.findById(updateTrip.getId())
@@ -35,6 +34,7 @@ public class TripService {
         existingTrip.update(updateTrip);
         return tripRepository.save(existingTrip);
     }
+
 
 //    @Transactional(readOnly = true)
 //    public List<TripResponse> getTripList(int page, int size){
