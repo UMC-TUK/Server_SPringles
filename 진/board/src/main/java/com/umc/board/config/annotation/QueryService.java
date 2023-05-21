@@ -1,4 +1,4 @@
-package com.umc.board.config;
+package com.umc.board.config.annotation;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,8 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CommandService {
+public @interface QueryService {
 }
