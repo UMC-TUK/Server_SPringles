@@ -37,3 +37,6 @@ out/
 .vscode/
 
 *.gradle
+.bat
+gradlew
+/gradle/wrapper
