@@ -4,7 +4,7 @@ import com.umc.board.config.security.jwt.JwtToken;
 import com.umc.board.config.security.jwt.JwtTokenProvider;
 import com.umc.board.config.security.jwt.JwtValidator;
 import com.umc.board.config.security.oauth.user.UserDetailsImpl;
-import com.umc.board.src.dao.MemberRepository;
+import com.umc.board.src.dao.MemberQueryRepository;
 import com.umc.board.src.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    private final MemberRepository memberRepository;
+    private final MemberQueryRepository memberQueryRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final JwtValidator jwtValidator;
 
@@ -37,7 +37,7 @@ public class AuthService {
 
         UUID id = UUID.fromString(user.getName());
 
-        String savedToken = memberRepository.findRefreshTokenById(id);
+        String savedToken = memberQueryRepository.findRefreshTokenById(id);
 
         if (!savedToken.equals(oldRefreshToken)) {
             throw new IllegalStateException();

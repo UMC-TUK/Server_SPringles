@@ -8,4 +8,6 @@ import java.util.List;
 public interface BoardQueryRepository {
     List<Board> findByType(BoardType type);
     List<Board> findByTitleContainsIgnoreCase(String title);
+    Board save(Board board);
+    void deleteById(Long id);
 }
