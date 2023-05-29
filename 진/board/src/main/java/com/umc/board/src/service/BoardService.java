@@ -1,8 +1,8 @@
 package com.umc.board.src.service;
 
 import com.umc.board.config.annotation.CommandService;
+import com.umc.board.src.dao.BoardQueryRepository;
 import com.umc.board.src.mapper.BoardMapper;
-import com.umc.board.src.dao.BoardRepository;
 import com.umc.board.src.dto.BoardRequest;
 import com.umc.board.src.dto.IdResponse;
 import com.umc.board.src.entity.Board;
@@ -12,12 +12,12 @@ import lombok.RequiredArgsConstructor;
 @CommandService
 @RequiredArgsConstructor
 public class BoardService {
-    private final BoardRepository boardRepository;
+    private final BoardQueryRepository boardQueryRepository;
     private final BoardProvider boardProvider;
     private final BoardMapper boardMapper;
 
     public IdResponse postBoard(BoardRequest boardRequest) {
-        Board board = boardRepository.save(boardMapper.toEntity(boardRequest));
+        Board board = boardQueryRepository.save(boardMapper.toEntity(boardRequest));
         return new IdResponse(board.getId());
     }
 
@@ -26,6 +26,6 @@ public class BoardService {
     }
 
     public void deleteBoard(Long id) {
-        boardRepository.deleteById(id);
+        boardQueryRepository.deleteById(id);
     }
 }
