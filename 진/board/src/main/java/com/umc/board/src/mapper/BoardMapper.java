@@ -6,7 +6,6 @@ import com.umc.board.src.entity.Board;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class BoardMapper {
@@ -27,6 +26,6 @@ public class BoardMapper {
     }
 
     public List<BoardResponse> toResponseList(List<Board> boardList) {
-        return boardList.stream().map(this::toResponse).collect(Collectors.toList());
+        return boardList.stream().map(this::toResponse).toList();
     }
 }

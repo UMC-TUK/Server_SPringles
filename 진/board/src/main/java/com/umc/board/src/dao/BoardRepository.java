@@ -1,8 +1,15 @@
 package com.umc.board.src.dao;
 
 import com.umc.board.src.entity.Board;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.umc.board.src.entity.BoardType;
 
-@Repository
-public interface BoardRepository extends JpaRepository<Board, Long>, BoardQueryRepository {}
+import java.util.List;
+import java.util.Optional;
+
+public interface BoardRepository {
+    List<Board> findByType(BoardType type);
+    List<Board> findByTitleContainsIgnoreCase(String title);
+    Board save(Board board);
+    void deleteById(Long id);
+    Optional<Board> findById(Long id);
+}
