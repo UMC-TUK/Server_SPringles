@@ -1,4 +1,4 @@
-package com.umc.board.config.service;
+package com.umc.board.global.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

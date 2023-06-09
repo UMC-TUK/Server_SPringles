@@ -4,7 +4,7 @@ import com.umc.board.config.security.jwt.JwtToken;
 import com.umc.board.config.security.jwt.JwtTokenProvider;
 import com.umc.board.config.security.jwt.JwtValidator;
 import com.umc.board.config.security.oauth.user.UserDetailsImpl;
-import com.umc.board.config.service.CommandService;
+import com.umc.board.global.service.CommandService;
 import com.umc.board.src.dao.MemberRepository;
 import com.umc.board.src.entity.Member;
 import com.umc.board.src.exception.InvalidJwtException;

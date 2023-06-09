@@ -1,7 +1,7 @@
 package com.umc.board.src.provider;
 
-import com.umc.board.config.service.EntityLoader;
-import com.umc.board.config.service.QueryService;
+import com.umc.board.global.service.EntityLoader;
+import com.umc.board.global.service.QueryService;
 import com.umc.board.src.dao.BoardRepository;
 import com.umc.board.src.dto.BoardResponse;
 import com.umc.board.src.entity.Board;

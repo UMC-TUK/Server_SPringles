@@ -1,6 +1,6 @@
 package com.umc.board.src.service;
 
-import com.umc.board.config.service.CommandService;
+import com.umc.board.global.service.CommandService;
 import com.umc.board.src.dao.BoardRepository;
 import com.umc.board.src.mapper.BoardMapper;
 import com.umc.board.src.dto.BoardRequest;
