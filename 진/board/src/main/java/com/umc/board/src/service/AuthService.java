@@ -4,6 +4,7 @@ import com.umc.board.config.security.jwt.JwtToken;
 import com.umc.board.config.security.jwt.JwtTokenProvider;
 import com.umc.board.config.security.jwt.JwtValidator;
 import com.umc.board.config.security.oauth.user.UserDetailsImpl;
+import com.umc.board.config.service.CommandService;
 import com.umc.board.src.dao.MemberRepository;
 import com.umc.board.src.entity.Member;
 import com.umc.board.src.exception.InvalidJwtException;
@@ -11,13 +12,11 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 
-@Service
+@CommandService
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class AuthService {
@@ -25,7 +24,6 @@ public class AuthService {
     JwtTokenProvider jwtTokenProvider;
     JwtValidator jwtValidator;
 
-    @Transactional
     public JwtToken refreshToken(String oldRefreshToken, String oldAccessToken) {
         if (!StringUtils.hasText(oldRefreshToken) || !StringUtils.hasText(oldAccessToken)) {
             throw new InvalidJwtException();
