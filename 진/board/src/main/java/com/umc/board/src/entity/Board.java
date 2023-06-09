@@ -1,16 +1,18 @@
 package com.umc.board.src.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.umc.board.global.audit.AuditListener;
+import com.umc.board.global.audit.Auditable;
+import com.umc.board.global.audit.BaseTime;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@EntityListeners(AuditListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board {
+public class Board implements Auditable {
+
     @Id @GeneratedValue
     private Long id;
 
@@ -21,6 +23,11 @@ public class Board {
 
     @Enumerated(EnumType.STRING)
     private BoardType type;
+
+    @Setter
+    @Embedded
+    @Column(nullable = false)
+    private BaseTime baseTime;
 
     @Builder
     public Board(String title, String content, BoardType type) {
