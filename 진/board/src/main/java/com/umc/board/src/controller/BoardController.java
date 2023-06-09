@@ -6,7 +6,9 @@ import com.umc.board.src.service.BoardService;
 import com.umc.board.src.dto.BoardRequest;
 import com.umc.board.src.dto.BoardResponse;
 import com.umc.board.src.dto.IdResponse;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +18,10 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/board")
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class BoardController {
-    private final BoardService boardService;
-    private final BoardProvider boardProvider;
+    BoardService boardService;
+    BoardProvider boardProvider;
 
     @PostMapping
     public ResponseEntity<IdResponse> postBoard(@RequestBody @Valid BoardRequest boardRequest) {

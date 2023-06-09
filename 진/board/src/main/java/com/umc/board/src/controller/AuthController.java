@@ -2,15 +2,18 @@ package com.umc.board.src.controller;
 
 import com.umc.board.config.security.jwt.JwtToken;
 import com.umc.board.src.service.AuthService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class AuthController {
-    private final AuthService authService;
+    AuthService authService;
 
     @GetMapping("/refresh")
     public ResponseEntity<JwtToken> authorize(

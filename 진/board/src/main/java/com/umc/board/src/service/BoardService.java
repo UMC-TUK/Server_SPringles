@@ -7,14 +7,17 @@ import com.umc.board.src.dto.BoardRequest;
 import com.umc.board.src.dto.IdResponse;
 import com.umc.board.src.entity.Board;
 import com.umc.board.src.provider.BoardProvider;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @CommandService
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class BoardService {
-    private final BoardRepository boardRepository;
-    private final BoardProvider boardProvider;
-    private final BoardMapper boardMapper;
+    BoardRepository boardRepository;
+    BoardProvider boardProvider;
+    BoardMapper boardMapper;
 
     public IdResponse postBoard(BoardRequest boardRequest) {
         Board board = boardRepository.save(boardMapper.toEntity(boardRequest));
@@ -22,7 +25,7 @@ public class BoardService {
     }
 
     public void putBoard(BoardRequest boardRequest, Long id) {
-        boardProvider.getEntity(id).update(boardRequest.getTitle(), boardRequest.getContent(), boardRequest.getType());
+        boardProvider.loadEntity(id).update(boardRequest.getTitle(), boardRequest.getContent(), boardRequest.getType());
     }
 
     public void deleteBoard(Long id) {
